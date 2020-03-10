@@ -6,17 +6,19 @@ using UnityEngine.UI;
 public class ScoreCounter : MonoBehaviour
 {
     public Text scoreText;
-    public static int blocksCount = 1;
+    public static int score = 0;
+    public static int countsOfBlocks = 1;
 
     void Start()
     {
-        blocksCount--;
-        scoreText.text = blocksCount.ToString();
+        scoreText.text = score.ToString();
+        countsOfBlocks--;
     }
 
     // Update is called once per frame
     void Update()
     {
-        scoreText.text = blocksCount.ToString();
+        scoreText.text = score.ToString();
+       
     }
 }

@@ -5,8 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class PlatformScript : MonoBehaviour
 {
-    float minX = -14.4f;
-    float maxX = 14.4f;
+    float minX = -2.4f;
+    float maxX = 2.4f;
     float y = -8;
     float z = 0;
 
@@ -21,6 +21,6 @@ public class PlatformScript : MonoBehaviour
     {
         Vector3 tmp = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         transform.position = new Vector3(Mathf.Clamp(tmp.x,minX,maxX), y, z);
-        if (ScoreCounter.blocksCount == 0) SceneManager.LoadScene(1);
+        if (ScoreCounter.countsOfBlocks == 0) SceneManager.LoadScene(0);
     }
 }

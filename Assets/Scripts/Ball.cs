@@ -29,7 +29,7 @@ public class Ball : MonoBehaviour
     {
         //Vector2 force = new Vector2(speed,speed);
         //rb.AddForce(force);
-        rb.velocity = new Vector2(speed, speed);
+        rb.velocity = Speed();
     }
 
     private void LockBallToPlatform()
@@ -46,5 +46,12 @@ public class Ball : MonoBehaviour
     {
         rb.velocity = Vector2.zero;
         started = false;
+    }
+
+    private Vector2 Speed()
+    {
+        float tmpSpeed = Random.Range(0, 2*speed) - speed;
+        var returnSpeed = new Vector2(tmpSpeed, Mathf.Sqrt(2 * speed * speed - tmpSpeed*tmpSpeed));
+        return returnSpeed;
     }
 }
