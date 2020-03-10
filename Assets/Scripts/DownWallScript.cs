@@ -6,7 +6,12 @@ public class DownWallScript : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D collision)
     {
+       // collision.GetComponent<Ball>();
+
         var ball = FindObjectOfType<Ball>();
         ball.StopBall();
+        ScoreCounter.life--;
+        if (ScoreCounter.life == 0) ScoreCounter.countsOfBlocks = 0;
     }
+
 }
