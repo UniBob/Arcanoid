@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class PlatformScript : MonoBehaviour
 {
@@ -22,7 +21,5 @@ public class PlatformScript : MonoBehaviour
     {
         Vector3 tmp = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         transform.position = new Vector3(Mathf.Clamp(tmp.x,minX,maxX), y, z);
-
-        if (ScoreCounter.countsOfBlocks == 0) SceneManager.LoadScene(0);
     }
 }

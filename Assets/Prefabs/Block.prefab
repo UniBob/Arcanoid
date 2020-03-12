@@ -126,3 +126,4 @@ MonoBehaviour:
   - {fileID: 21300000, guid: aafae60813862fe43944153c99ba2661, type: 3}
   - {fileID: 21300000, guid: ab1471c88fb592342a766d814f3ad4c1, type: 3}
   blockCost: 10
+  tmp: 0
