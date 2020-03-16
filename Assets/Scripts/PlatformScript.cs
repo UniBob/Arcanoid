@@ -13,8 +13,8 @@ public class PlatformScript : MonoBehaviour
 
     void Start()
     {
+        //set start position to platform
         transform.position = new Vector3(0, y, z);
-
     }
 
 
@@ -23,10 +23,11 @@ public class PlatformScript : MonoBehaviour
     {
         if (isPaused)
         {       
-            
+         //if game is paused platfaorm not moving   
         }
         else
         {
+            //moving the platform by mouse if game isn't pause
             Vector3 tmp = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             transform.position = new Vector3(Mathf.Clamp(tmp.x, minX, maxX), y, z);
         }

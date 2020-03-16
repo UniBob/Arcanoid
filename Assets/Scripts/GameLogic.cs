@@ -17,6 +17,7 @@ public class GameLogic : MonoBehaviour
 
     void Start()
     {
+        //iniciate blocks
         for (int i = 0;i<data.level[data.chosenLevel].boxBloksCoordinates.Length;i++)
         {
             Instantiate(boxBlock);
@@ -38,7 +39,7 @@ public class GameLogic : MonoBehaviour
         int boxI = 0;
         int circleI = 0;
         int triangleI = 0;
-
+        //set some blocks immune and invisible
         int tmp = data.level[data.chosenLevel].immuneCount;
         while (tmp>0)
         {
@@ -60,7 +61,7 @@ public class GameLogic : MonoBehaviour
                 tmp--;
             }
         }
-
+        //change positions of blocks
         for (int i = 0; i < blocks.Length; i++)
         {
             if (blocks[i].blockType == Block.BlockType.BOX)
@@ -87,7 +88,7 @@ public class GameLogic : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        //pause check
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (PlatformScript.isPaused)
@@ -102,6 +103,7 @@ public class GameLogic : MonoBehaviour
 
     }
 
+    //function for set pause 
     void SetPause(bool pauseStatus)
     {
         PlatformScript.isPaused = pauseStatus;
@@ -117,6 +119,7 @@ public class GameLogic : MonoBehaviour
         pauseButton.active = !pauseStatus;
     }
 
+    //function for pause button
     public void PauseButton(bool pauseStatus)
     {
         SetPause(pauseStatus);

@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class DownWallScript : MonoBehaviour
 {
+    //fuction for loosing your lifes
     private void OnTriggerExit2D(Collider2D collision)
     {
-       // collision.GetComponent<Ball>();
-
         var ball = FindObjectOfType<Ball>();
         ball.StopBall();
         ScoreCounter.life--;

@@ -21,9 +21,9 @@ public class ScoreCounter : MonoBehaviour
         life = 3;
         countOfAll = data.level[data.chosenLevel].boxBloksCoordinates.Length + data.level[data.chosenLevel].circleBlocksCoordinates.Length + data.level[data.chosenLevel].triangleBlocksCoordinates.Length;
         scoreText.text = score.ToString();
-      //  countsOfBlocks = data.level[data.chosenLevel].blocksCount;
         lifeText.text = life.ToString();
     }
+
     void Update()
     {
         scoreText.text = score.ToString();

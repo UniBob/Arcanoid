@@ -5,13 +5,13 @@ using UnityEngine;
 public class Block : MonoBehaviour
 {
     int blockStrength = 0;
-    public Sprite[] destructionStages;
-    public int blockCost;
-    public BlockType blockType;
+    public Sprite[] destructionStages;      //array of destraction stages
+    public int blockCost;                   //cost of block destraction
+    public BlockType blockType;             
 
     public bool isInvisible = false;
     public bool isImmune = false;
-    bool tmp = false;
+    bool tmp = false;                       //need to ignore immune block for cheking for a win
     public enum BlockType
     {
         BOX,
@@ -22,7 +22,7 @@ public class Block : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        //set starting sprites for block
         if (!isInvisible)
         { 
             GetComponent<SpriteRenderer>().sprite = destructionStages[blockStrength]; 
@@ -36,10 +36,12 @@ public class Block : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        //set invisible block visible
         if (isInvisible)
         {
             GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1);
         }
+        //ignore damage if block immune
         if (isImmune)
         {
             if (!tmp)
@@ -48,6 +50,7 @@ public class Block : MonoBehaviour
                 tmp = true;
             }
         }
+        //taking damage if it not
         else
         {
             blockStrength++;

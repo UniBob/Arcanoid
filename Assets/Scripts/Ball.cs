@@ -27,8 +27,6 @@ public class Ball : MonoBehaviour
 
     private void LaunchBall()
     {
-        //Vector2 force = new Vector2(speed,speed);
-        //rb.AddForce(force);
         rb.velocity = Speed();
     }
 
