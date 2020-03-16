@@ -9,6 +9,9 @@ public class Block : MonoBehaviour
     public int blockCost;
     public BlockType blockType;
 
+    public bool isInvisible = false;
+    public bool isImmune = false;
+    bool tmp = false;
     public enum BlockType
     {
         BOX,
@@ -19,26 +22,45 @@ public class Block : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GetComponent<SpriteRenderer>().sprite = destructionStages[blockStrength];
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        blockStrength++;
-        if (blockStrength < destructionStages.Length)
-        {
-            GetComponent<SpriteRenderer>().sprite = destructionStages[blockStrength];
+        if (!isInvisible)
+        { 
+            GetComponent<SpriteRenderer>().sprite = destructionStages[blockStrength]; 
         }
         else
         {
-            ScoreCounter.score += blockCost;
-            ScoreCounter.countsOfBlocks++;
-            Destroy(gameObject);
+            GetComponent<SpriteRenderer>().color = new Color (0,0,0,0);
+            blockStrength--;
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (isInvisible)
+        {
+            GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1);
+        }
+        if (isImmune)
+        {
+            if (!tmp)
+            {
+                ScoreCounter.countsOfBlocks++;
+                tmp = true;
+            }
+        }
+        else
+        {
+            blockStrength++;
+            if (blockStrength < destructionStages.Length)
+            {
+                GetComponent<SpriteRenderer>().sprite = destructionStages[blockStrength];
+            }
+            else
+            {
+                ScoreCounter.score += blockCost;
+                ScoreCounter.countsOfBlocks++;
+                Destroy(gameObject);
+            }
         }
     }
         

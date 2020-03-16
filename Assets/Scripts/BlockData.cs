@@ -8,4 +8,6 @@ public class BlockData : ScriptableObject
     public Vector3[] boxBloksCoordinates;
     public Vector3[] circleBlocksCoordinates;
     public Vector3[] triangleBlocksCoordinates;
+    public int immuneCount;
+    public int invisibleCount;
 }

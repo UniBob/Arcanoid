@@ -30,3 +30,5 @@ MonoBehaviour:
   circleBlocksCoordinates:
   - {x: 0, y: -3, z: 0}
   triangleBlocksCoordinates: []
+  immuneCount: 1
+  invisibleCount: 1

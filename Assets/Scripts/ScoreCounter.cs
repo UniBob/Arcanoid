@@ -12,7 +12,7 @@ public class ScoreCounter : MonoBehaviour
     public static int score = 0;
     public static int countsOfBlocks = 0;
     public static int life = 3;
-    int countOfAll;
+    public int countOfAll;
 
     void Start()
     {

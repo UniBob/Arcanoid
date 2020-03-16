@@ -6,16 +6,22 @@ using UnityEngine;
 public class GameLogic : MonoBehaviour
 {
     public LevelData data;
+
+    public GameObject pauseMenu;
+    public GameObject pauseButton;
+
     //public BlockData data;
     public GameObject boxBlock;
     public GameObject circleBlock;
     public GameObject triangleBlock;
+
     void Start()
     {
         for (int i = 0;i<data.level[data.chosenLevel].boxBloksCoordinates.Length;i++)
         {
             Instantiate(boxBlock);
         }
+
         for (int i = 0; i < data.level[data.chosenLevel].circleBlocksCoordinates.Length; i++)
         {
             Instantiate(circleBlock);
@@ -25,11 +31,36 @@ public class GameLogic : MonoBehaviour
         {
             Instantiate(triangleBlock);
         }
+
         Block[] blocks = FindObjectsOfType<Block>();
         Debug.Log(blocks.Length.ToString());
+
         int boxI = 0;
         int circleI = 0;
         int triangleI = 0;
+
+        int tmp = data.level[data.chosenLevel].immuneCount;
+        while (tmp>0)
+        {
+            int a = Random.Range(0, blocks.Length);
+            if (!blocks[a].isImmune)
+            { 
+                blocks[a].isImmune = true;
+                tmp--;
+            }
+        }
+
+        tmp = data.level[data.chosenLevel].invisibleCount;
+        while (tmp > 0)
+        {
+            int a = Random.Range(0, blocks.Length);
+            if (!blocks[a].isInvisible)
+            {
+                blocks[a].isInvisible = true;
+                tmp--;
+            }
+        }
+
         for (int i = 0; i < blocks.Length; i++)
         {
             if (blocks[i].blockType == Block.BlockType.BOX)
@@ -57,5 +88,37 @@ public class GameLogic : MonoBehaviour
     void Update()
     {
         
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (PlatformScript.isPaused)
+            {
+                SetPause(false);
+            }
+            else
+            {
+                SetPause(true);
+            }
+        }
+
+    }
+
+    void SetPause(bool pauseStatus)
+    {
+        PlatformScript.isPaused = pauseStatus;
+        if (pauseStatus)
+        {
+            Time.timeScale = 0;
+        }
+        else
+        {
+            Time.timeScale = 1;
+        }
+        pauseMenu.active = pauseStatus;
+        pauseButton.active = !pauseStatus;
+    }
+
+    public void PauseButton(bool pauseStatus)
+    {
+        SetPause(pauseStatus);
     }
 }

@@ -9,6 +9,8 @@ public class PlatformScript : MonoBehaviour
     float y = -8;
     float z = 0;
 
+    public static bool isPaused = false;
+
     void Start()
     {
         transform.position = new Vector3(0, y, z);
@@ -19,7 +21,14 @@ public class PlatformScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector3 tmp = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        transform.position = new Vector3(Mathf.Clamp(tmp.x,minX,maxX), y, z);
+        if (isPaused)
+        {       
+            
+        }
+        else
+        {
+            Vector3 tmp = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            transform.position = new Vector3(Mathf.Clamp(tmp.x, minX, maxX), y, z);
+        }
     }
 }
