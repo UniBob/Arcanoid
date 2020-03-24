@@ -7,12 +7,16 @@ public class Block : MonoBehaviour
     int blockStrength = 0;
     public Sprite[] destructionStages;      //array of destraction stages
     public int blockCost;                   //cost of block destraction
-    public BlockType blockType;             
+    public BlockType blockType;             //type of current block
 
     public bool isInvisible = false;
     public bool isImmune = false;
-    bool tmp = false;                       //need to ignore immune block for cheking for a win
-    public enum BlockType
+   
+    ScoreCounter score;                     //link to ScoreCounter on scene
+
+    public GameObject powerUp;
+
+    public enum BlockType                   //block type
     {
         BOX,
         TRIANGLE,
@@ -32,6 +36,8 @@ public class Block : MonoBehaviour
             GetComponent<SpriteRenderer>().color = new Color (0,0,0,0);
             blockStrength--;
         }
+
+        score = FindObjectOfType<ScoreCounter>();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -44,11 +50,7 @@ public class Block : MonoBehaviour
         //ignore damage if block immune
         if (isImmune)
         {
-            if (!tmp)
-            {
-                ScoreCounter.countsOfBlocks++;
-                tmp = true;
-            }
+
         }
         //taking damage if it not
         else
@@ -60,11 +62,17 @@ public class Block : MonoBehaviour
             }
             else
             {
-                ScoreCounter.score += blockCost;
-                ScoreCounter.countsOfBlocks++;
+                score.ScoreUpdate(blockCost);
+                if (powerUp != null)
+                {
+                    powerUp.transform.position = transform.position;
+                    Instantiate(powerUp);
+                }
                 Destroy(gameObject);
             }
         }
     }
+
+
         
 }

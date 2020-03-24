@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class LevelChoser : MonoBehaviour
 {
-    public LevelData data;
+    public LevelData data;      //link to level database
 
     //function for set level and load game scene
     public void LevelChoosing(int i)

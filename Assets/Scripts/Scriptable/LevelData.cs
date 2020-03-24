@@ -7,5 +7,5 @@ public class LevelData : ScriptableObject
 {
     public BlockData[] level;       //array of all levels
     public int chosenLevel = 0;     //index of chosen level
-
+    public GameObject[] powerUps;
 }

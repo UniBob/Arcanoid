@@ -28,5 +28,5 @@ MonoBehaviour:
   - {x: 1.5, y: 2.5, z: 0}
   triangleBlocksCoordinates:
   - {x: 0, y: 5.5, z: 0}
-  immuneCount: 1
-  invisibleCount: 1
+  immuneCount: 0
+  invisibleCount: 0

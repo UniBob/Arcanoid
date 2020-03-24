@@ -112,8 +112,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destructionStages:
-  - {fileID: 21300000, guid: a6209ddf6965c484e8499eeb0fc6900d, type: 3}
-  - {fileID: 21300000, guid: b57df5be32f33da45843dcc6dd7638a1, type: 3}
-  - {fileID: 21300000, guid: 4cdf0ce918ae16f4faa224edef7d6e7e, type: 3}
+  - {fileID: 21300000, guid: 95d6da5c37140994d869e17d393eb1b2, type: 3}
+  - {fileID: 21300000, guid: aa2d8e60bc9d83143b626fcd347ce5da, type: 3}
+  - {fileID: 21300000, guid: 510a880daab8c6646a780eaf00e6c649, type: 3}
   blockCost: 15
   blockType: 2
+  isInvisible: 0
+  isImmune: 0

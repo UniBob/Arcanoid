@@ -5,15 +5,17 @@ using UnityEngine;
 
 public class GameLogic : MonoBehaviour
 {
-    public LevelData data;
+    public LevelData data;                      //link to level database
 
-    public GameObject pauseMenu;
-    public GameObject pauseButton;
+    public GameObject pauseMenu;                //link to pause elements
+    public GameObject pauseButton;              //link to pause button
 
-    //public BlockData data;
-    public GameObject boxBlock;
-    public GameObject circleBlock;
-    public GameObject triangleBlock;
+    public GameObject boxBlock;                 //link to box block prefab
+    public GameObject circleBlock;              //link to circle block prefab    
+    public GameObject triangleBlock;            //link to triangle block prefab
+
+    public bool autoPlay = false;
+    public float autoPlaySpeed = 1.5f;
 
     void Start()
     {
@@ -33,14 +35,19 @@ public class GameLogic : MonoBehaviour
             Instantiate(triangleBlock);
         }
 
-        Block[] blocks = FindObjectsOfType<Block>();
-        Debug.Log(blocks.Length.ToString());
+        Block[] blocks = FindObjectsOfType<Block>();    //array of all blocks on scene
 
+        //iterators on appropriate arrays
         int boxI = 0;
         int circleI = 0;
         int triangleI = 0;
+
         //set some blocks immune and invisible
         int tmp = data.level[data.chosenLevel].immuneCount;
+
+        var score = FindObjectOfType<ScoreCounter>();
+        score.SetCountOfAll(blocks.Length - tmp);
+
         while (tmp>0)
         {
             int a = Random.Range(0, blocks.Length);
@@ -61,6 +68,10 @@ public class GameLogic : MonoBehaviour
                 tmp--;
             }
         }
+
+        // set count of all blocks
+        
+
         //change positions of blocks
         for (int i = 0; i < blocks.Length; i++)
         {
@@ -81,8 +92,23 @@ public class GameLogic : MonoBehaviour
             }
         }
 
+        if (autoPlay)
+        {
+            Time.timeScale = autoPlaySpeed;            
+        }
+
+        PowerUpAdd(blocks);
     }
 
+
+    void PowerUpAdd(Block[] blocks)
+    {
+        int tmpCount = data.powerUps.Length;
+        for (int i = 0; i < blocks.Length; i++)
+        {
+            blocks[i].powerUp = data.powerUps[Random.Range(0, tmpCount)];
+        }
+    }
 
 
     // Update is called once per frame
@@ -113,10 +139,11 @@ public class GameLogic : MonoBehaviour
         }
         else
         {
-            Time.timeScale = 1;
+            Time.timeScale = autoPlay == true ? autoPlaySpeed : 1;
+            
         }
-        pauseMenu.active = pauseStatus;
-        pauseButton.active = !pauseStatus;
+        pauseMenu.SetActive(pauseStatus);
+        pauseButton.SetActive(!pauseStatus);
     }
 
     //function for pause button

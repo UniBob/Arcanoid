@@ -30,5 +30,8 @@ MonoBehaviour:
   circleBlocksCoordinates:
   - {x: 0, y: -3, z: 0}
   triangleBlocksCoordinates: []
-  immuneCount: 1
-  invisibleCount: 1
+  immuneCount: 0
+  invisibleCount: 0
+  powerUps:
+  - {fileID: 3811669080803706408, guid: 7eadb3d7edc80744ba56063e18b8b7fa, type: 3}
+  countOfPowerUps: 05000000
