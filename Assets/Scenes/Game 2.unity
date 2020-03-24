@@ -1790,6 +1790,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ball
       objectReference: {fileID: 0}
+    - target: {fileID: 229904444003224538, guid: 1f01acc092dcf7c42bcaf1c9b1a59731,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 229904444003224550, guid: 1f01acc092dcf7c42bcaf1c9b1a59731,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2025,8 +2030,14 @@ PrefabInstance:
     - target: {fileID: 9074865469324391730, guid: a617d3aa4156480428f2ad85d8f3bfda,
         type: 3}
       propertyPath: autoPlay
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9074865469324391730, guid: a617d3aa4156480428f2ad85d8f3bfda,
+        type: 3}
+      propertyPath: ball
+      value: 
+      objectReference: {fileID: 229904444003224538, guid: 1f01acc092dcf7c42bcaf1c9b1a59731,
+        type: 3}
     - target: {fileID: 9074865469324391731, guid: a617d3aa4156480428f2ad85d8f3bfda,
         type: 3}
       propertyPath: m_LocalPosition.x

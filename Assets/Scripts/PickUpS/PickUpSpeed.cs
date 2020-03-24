@@ -8,7 +8,11 @@ public class PickUpSpeed : MonoBehaviour
 
     void ApplyUpdates(Collider2D collision)
     {
-        collision.GetComponent<PlatformScript>().SpeedUpdate(speedScale, speedScale);
+        var balls = FindObjectsOfType<Ball>();
+        foreach (Ball tmp in balls)
+        {
+            tmp.SpeedUpdate(speedScale,speedScale);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

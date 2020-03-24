@@ -2,14 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ScoreDown : MonoBehaviour
+public class LifeUp : MonoBehaviour
 {
-    public int scoreUpdate;
+    ScoreCounter score;
+    public int LifeCount;
 
     void ApplyUpdates(Collider2D collision)
     {
-        var score = FindObjectOfType<ScoreCounter>();
-        score.ScoreUpdate(-scoreUpdate);
+        score = FindObjectOfType<ScoreCounter>();
+        score.LifeUp(LifeCount);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -17,11 +18,6 @@ public class ScoreDown : MonoBehaviour
         if (collision.gameObject.CompareTag("Platform"))
         {
             ApplyUpdates(collision);
-            Destroy(gameObject);
-        }
-
-        if (collision.gameObject.CompareTag("GameLose"))
-        {
             Destroy(gameObject);
         }
     }

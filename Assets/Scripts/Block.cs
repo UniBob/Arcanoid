@@ -62,7 +62,7 @@ public class Block : MonoBehaviour
             }
             else
             {
-                score.ScoreUpdate(blockCost);
+                score.ScoreUpdateForBlock(blockCost);
                 if (powerUp != null)
                 {
                     powerUp.transform.position = transform.position;

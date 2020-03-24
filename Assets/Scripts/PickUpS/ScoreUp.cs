@@ -19,10 +19,5 @@ public class ScoreUp : MonoBehaviour
             ApplyUpdates(collision);
             Destroy(gameObject);
         }
-
-        if (collision.gameObject.CompareTag("GameLose"))
-        {
-            Destroy(gameObject);
-        }
     }
 }

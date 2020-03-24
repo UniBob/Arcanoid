@@ -14,6 +14,8 @@ public class ScoreCounter : MonoBehaviour
     public static int life = 3;                 //current lifes
     public int countOfAll = 1;                  //count of all blocks on scene at start
 
+    private int maxLife = 5;
+
     void Start()
     {
         score = 0;                                  
@@ -27,6 +29,13 @@ public class ScoreCounter : MonoBehaviour
     public void ScoreUpdate(int blockCost)
     {        
         score += blockCost;
+        scoreText.text = score.ToString();
+        if (countsOfBlocks >= countOfAll) SceneManager.LoadScene(3);
+    }
+
+    public void ScoreUpdateForBlock(int blockCost)
+    {
+        score += blockCost;
         countsOfBlocks++;
         scoreText.text = score.ToString();
         if (countsOfBlocks >= countOfAll) SceneManager.LoadScene(3);
@@ -39,6 +48,16 @@ public class ScoreCounter : MonoBehaviour
         lifeText.text = life.ToString();
         if (life <= 0) SceneManager.LoadScene(3);
     }
+
+    public void LifeUp(int a)
+    {
+        life += a;
+        if (life <= maxLife) life++;
+        if (life <= 1) life++;
+        LifeUpdate();
+    }
+
+
 
     //function to set count of blocks at start
     //used at block script

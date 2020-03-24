@@ -2,16 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BallSizeUp : MonoBehaviour
+public class StickyPickUp : MonoBehaviour
 {
-    public float sizeScale;
-
     void ApplyUpdates(Collider2D collision)
     {
         var balls = FindObjectsOfType<Ball>();
-        foreach(Ball tmp in balls)
+        foreach(Ball tmpBall in balls)
         {
-            tmp.BallSizeUp(sizeScale);
+            tmpBall.LockPickUp();
         }
     }
 

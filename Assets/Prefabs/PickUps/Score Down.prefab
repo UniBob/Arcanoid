@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3811669080803706413}
   - component: {fileID: 3811669080803706414}
   - component: {fileID: 3811669080803706415}
-  - component: {fileID: 7769187984124937473}
+  - component: {fileID: -44438340124272333}
   m_Layer: 0
   m_Name: Score Down
   m_TagString: Untagged
@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 4f3dcdccaa7230a428c3d146e0c2fb41, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.43712175, g: 0.4388511, b: 0.4433962, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -121,7 +121,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &7769187984124937473
+--- !u!114 &-44438340124272333
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -130,7 +130,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3811669080803706408}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7159c9e30c6585949a051d19faa901dc, type: 3}
+  m_Script: {fileID: 11500000, guid: 004b6d6bc3aa2a643b64714b2e52a368, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scoreUpdate: 20
+  scoreUpdate: -20

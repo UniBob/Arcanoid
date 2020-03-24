@@ -20,10 +20,5 @@ public class PlatformWidthUp : MonoBehaviour
             ApplyUpdates(collision);
             Destroy(gameObject);
         }
-
-        if (collision.gameObject.CompareTag("GameLose"))
-        {
-            Destroy(gameObject);
-        }
     }
 }

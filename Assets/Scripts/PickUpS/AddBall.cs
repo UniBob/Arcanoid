@@ -2,15 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlatformWidthDown : MonoBehaviour
+public class AddBall : MonoBehaviour
 {
-    public float widthScale;
-
+    GameLogic game;
     void ApplyUpdates(Collider2D collision)
     {
-        var tmp = collision.transform.localScale;
-        tmp.x /= widthScale;
-        collision.transform.localScale = tmp;
+        var ball = FindObjectOfType<Ball>();
+        Ball tmp = Instantiate(ball);
+        tmp.LaunchNewBall();
+        
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -18,11 +18,6 @@ public class PlatformWidthDown : MonoBehaviour
         if (collision.gameObject.CompareTag("Platform"))
         {
             ApplyUpdates(collision);
-            Destroy(gameObject);
-        }
-
-        if (collision.gameObject.CompareTag("GameLose"))
-        {
             Destroy(gameObject);
         }
     }

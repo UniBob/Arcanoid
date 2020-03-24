@@ -14,11 +14,14 @@ public class GameLogic : MonoBehaviour
     public GameObject circleBlock;              //link to circle block prefab    
     public GameObject triangleBlock;            //link to triangle block prefab
 
+    public GameObject ball;
+
     public bool autoPlay = false;
     public float autoPlaySpeed = 1.5f;
 
     void Start()
     {
+        
         //iniciate blocks
         for (int i = 0;i<data.level[data.chosenLevel].boxBloksCoordinates.Length;i++)
         {
@@ -110,6 +113,10 @@ public class GameLogic : MonoBehaviour
         }
     }
 
+    public void AddBall()
+    {
+        Instantiate(ball);
+    }
 
     // Update is called once per frame
     void Update()

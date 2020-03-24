@@ -9,10 +9,21 @@ public class DownWallScript : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Ball"))
         {            
-            var ball = FindObjectOfType<Ball>();
-            ball.StopBall();
-            var score = FindObjectOfType<ScoreCounter>();
-            score.LifeUpdate();
+            var ball = FindObjectsOfType<Ball>();
+            if (ball.Length > 1)
+            {
+
+            }
+            else
+            {
+                ball[0].StopBall();
+                var score = FindObjectOfType<ScoreCounter>();
+                score.LifeUpdate();
+            }
+        }
+        else
+        {
+            Destroy(collision.gameObject);
         }
     }
 }
