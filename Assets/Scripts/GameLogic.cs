@@ -100,6 +100,12 @@ public class GameLogic : MonoBehaviour
             Time.timeScale = autoPlaySpeed;            
         }
 
+        for (int i = 0;i<3;i++)
+        {
+            int j = Random.Range(0, blocks.Length);
+            blocks[j].isExplouding = true;
+        }
+
         PowerUpAdd(blocks);
     }
 

@@ -16,6 +16,9 @@ public class Block : MonoBehaviour
 
     public GameObject powerUp;
 
+    public bool isExplouding = false;
+    public float exploadRadius = 0.5f;
+
     public enum BlockType                   //block type
     {
         BOX,
@@ -47,6 +50,13 @@ public class Block : MonoBehaviour
         {
             GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1);
         }
+
+        if (collision.gameObject.GetComponent<Ball>().GetExplosive()) 
+        { 
+            isExplouding = true;
+            DestroyBlock();
+        }
+
         //ignore damage if block immune
         if (isImmune)
         {
@@ -61,18 +71,42 @@ public class Block : MonoBehaviour
                 GetComponent<SpriteRenderer>().sprite = destructionStages[blockStrength];
             }
             else
-            {
-                score.ScoreUpdateForBlock(blockCost);
-                if (powerUp != null)
-                {
-                    powerUp.transform.position = transform.position;
-                    Instantiate(powerUp);
-                }
-                Destroy(gameObject);
+            {               
+                DestroyBlock();
             }
         }
     }
 
 
-        
+    public void DestroyBlock()
+    {
+        score.ScoreUpdateForBlock(blockCost);
+        if (powerUp != null)
+        {
+            powerUp.transform.position = transform.position;
+            Instantiate(powerUp);
+        }
+        Destroy(gameObject);
+
+        if (isExplouding)
+        {
+            Explode();
+        }
+
+    }
+
+    void Explode()
+    {
+        Collider2D[] blocksOnRadius = Physics2D.OverlapCircleAll(transform.position, exploadRadius, LayerMask.GetMask("Block"));
+        foreach (Collider2D i in blocksOnRadius)
+        {
+            if (i.gameObject != gameObject) i.GetComponent<Block>().DestroyBlock();
+        }
+    }
+
+    //private void OnDrawGizmos()
+    //{
+    //    Gizmos.color = Color.red;
+    //    if (isExplouding) Gizmos.DrawWireSphere(transform.position, exploadRadius);
+    //}
 }

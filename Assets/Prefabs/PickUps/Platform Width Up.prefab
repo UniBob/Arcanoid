@@ -14,8 +14,8 @@ GameObject:
   - component: {fileID: 3811669080803706415}
   - component: {fileID: -6296693035254448074}
   m_Layer: 0
-  m_Name: Platform Width Down
-  m_TagString: Untagged
+  m_Name: Platform Width Up
+  m_TagString: PickUp
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -28,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3811669080803706408}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -133,4 +133,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ba17a07e5fdacc4ab3c1577fcea23c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  widthScale: 0.6
+  widthScale: 1.5
+  scoreUpdate: 1

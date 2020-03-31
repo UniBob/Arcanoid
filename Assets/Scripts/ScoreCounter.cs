@@ -46,7 +46,7 @@ public class ScoreCounter : MonoBehaviour
     {
         life--;
         lifeText.text = life.ToString();
-        if (life <= 0) SceneManager.LoadScene(3);
+        if (life <= 0) SceneManager.LoadScene(4);
     }
 
     public void LifeUp(int a)

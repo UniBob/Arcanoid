@@ -6,10 +6,16 @@ public class ScoreUp : MonoBehaviour
 {
     public int scoreUpdate;
 
-    void ApplyUpdates(Collider2D collision)
+
+    void AddScore()
     {
         var score = FindObjectOfType<ScoreCounter>();
         score.ScoreUpdate(scoreUpdate);
+    }
+
+    void ApplyUpdates(Collider2D collision)
+    {
+        AddScore();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

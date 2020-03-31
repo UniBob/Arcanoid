@@ -4,6 +4,15 @@ using UnityEngine;
 
 public class StickyPickUp : MonoBehaviour
 {
+    public int scoreUpdate;
+
+
+    void AddScore()
+    {
+        var score = FindObjectOfType<ScoreCounter>();
+        score.ScoreUpdate(scoreUpdate);
+    }
+
     void ApplyUpdates(Collider2D collision)
     {
         var balls = FindObjectsOfType<Ball>();
@@ -11,6 +20,7 @@ public class StickyPickUp : MonoBehaviour
         {
             tmpBall.LockPickUp();
         }
+        AddScore();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

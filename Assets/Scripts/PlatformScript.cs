@@ -60,4 +60,13 @@ public class PlatformScript : MonoBehaviour
     {
         transform.position = new Vector3(ball.transform.position.x, y, z);
     }
+
+    public void WidthUpdate(float widthScale)
+    {
+        var tmp = transform.localScale;
+        tmp.x *= widthScale;
+        transform.localScale = tmp;
+    }
+
+    
 }

@@ -136,3 +136,5 @@ MonoBehaviour:
   speed: 10
   started: 0
   isStiky: 0
+  normalBall: {fileID: 21300000, guid: be03ae4cf7108264d8b583b56c70a97d, type: 3}
+  explosiveBall: {fileID: 21300000, guid: 1a8d6858a317a764aa6ddbbda2a20e24, type: 3}

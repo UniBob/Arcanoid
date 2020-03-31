@@ -5,6 +5,14 @@ using UnityEngine;
 public class PickUpSpeed : MonoBehaviour
 {
     public float speedScale;
+    public int scoreUpdate;
+
+
+    void AddScore()
+    {
+        var score = FindObjectOfType<ScoreCounter>();
+        score.ScoreUpdate(scoreUpdate);
+    }
 
     void ApplyUpdates(Collider2D collision)
     {
@@ -13,6 +21,7 @@ public class PickUpSpeed : MonoBehaviour
         {
             tmp.SpeedUpdate(speedScale,speedScale);
         }
+        AddScore();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

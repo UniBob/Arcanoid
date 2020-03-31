@@ -14,9 +14,16 @@ public class Ball : MonoBehaviour
     Vector3 deltaPosition;
     float timer;
 
+    public Sprite normalBall;
+    public Sprite explosiveBall;
+
+    bool explosive = false;
+    float explosiveTimer = 0;
+
     // Start is called before the first frame update
     void Start()
     {
+        GetComponent<SpriteRenderer>().sprite = normalBall;
         platform = FindObjectOfType<PlatformScript>();
         transform.position = new Vector3(platform.transform.position.x, platform.transform.position.y + deltaY, 0);
         deltaPosition = transform.position - platform.transform.position;
@@ -30,6 +37,19 @@ public class Ball : MonoBehaviour
         {
             LockBallToPlatform();
         }
+        if (explosive)
+        {
+            if (Time.time > explosiveTimer)
+            {
+                GetComponent<SpriteRenderer>().sprite = normalBall;
+                explosive = false;
+            }
+        }
+    }
+
+    public bool GetExplosive()
+    {
+        return explosive;
     }
 
     private void Awake()
@@ -69,6 +89,14 @@ public class Ball : MonoBehaviour
         }
     }
 
+    public void ResetSettings()
+    {
+        ResetWidth();
+        explosive = false;
+        GetComponent<SpriteRenderer>().sprite = normalBall;
+        StopBall();
+    }
+
     //stop ball at all
     public void StopBall()
     {
@@ -96,6 +124,13 @@ public class Ball : MonoBehaviour
     }
 
 
+    public void setBallExplosive(float time)
+    {
+        explosive = true;
+        GetComponent<SpriteRenderer>().sprite = explosiveBall;
+        explosiveTimer = Time.time + time;
+    }
+
     public void LaunchNewBall()
     {
         LaunchBall();
@@ -115,4 +150,12 @@ public class Ball : MonoBehaviour
             }
         }
     }
+
+    void ResetWidth()
+    {
+        platform.transform.localScale = new Vector3(1, 1, 1);
+        transform.localScale = new Vector3(1, 1, 1);
+    }
+
+
 }

@@ -19,5 +19,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 14137a1c36a036747880791a0223b06b, type: 2}
   chosenLevel: 2
   powerUps:
-  - {fileID: 3811669080803706408, guid: a924b5cdf749a9d47ae1f7c7ef48c98b, type: 3}
-  - {fileID: 3811669080803706408, guid: f83aa8c79de145f458a113bb028f094b, type: 3}
+  - {fileID: 3811669080803706408, guid: a26b7707698408c43b8b9103fe4986c5, type: 3}

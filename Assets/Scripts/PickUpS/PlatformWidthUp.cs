@@ -5,12 +5,18 @@ using UnityEngine;
 public class PlatformWidthUp : MonoBehaviour
 {
     public float widthScale;
+    public int scoreUpdate;
+
+    void AddScore()
+    {
+        var score = FindObjectOfType<ScoreCounter>();
+        score.ScoreUpdate(scoreUpdate);
+    }
 
     void ApplyUpdates(Collider2D collision)
     {
-        var tmp = collision.transform.localScale;
-        tmp.x *= widthScale;
-        collision.transform.localScale = tmp;
+        collision.GetComponent<PlatformScript>().WidthUpdate(widthScale);
+        AddScore();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

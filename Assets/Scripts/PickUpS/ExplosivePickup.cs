@@ -2,12 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BallSizeUp : MonoBehaviour
+public class ExplosivePickup : MonoBehaviour
 {
-    public float sizeScale;
+    public float explosiveTime;
     public int scoreUpdate;
-
-
+    
     void AddScore()
     {
         var score = FindObjectOfType<ScoreCounter>();
@@ -17,9 +16,9 @@ public class BallSizeUp : MonoBehaviour
     void ApplyUpdates(Collider2D collision)
     {
         var balls = FindObjectsOfType<Ball>();
-        foreach(Ball tmp in balls)
+        foreach (Ball tmp in balls)
         {
-            tmp.BallSizeUp(sizeScale);
+            tmp.setBallExplosive(explosiveTime);
         }
         AddScore();
     }
